@@ -1,0 +1,17 @@
+{
+    "name": "waiterphp/builder",
+    "description": "waiterphp console",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "han.jian",
+            "email": "916117482@qq.com"
+        },
+        {
+            "name": "Tian Zheng",
+            "email": "949855040@qq.com"
+        }
+    ],
+    "require": {}
+}

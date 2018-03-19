@@ -13,5 +13,13 @@
             "email": "949855040@qq.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Builder\\": "src/Builder",
+            "Tests\\": "src/Tests"
+        }
+    },
+    "require": {
+		"phpunit/phpunit": "^4.8"
+    }
 }

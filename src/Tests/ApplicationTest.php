@@ -17,5 +17,5 @@ class ApplicationTest extends TestCase
         $app = new Application();
         $this->assertTrue($app->run());
     }
-    
+
 }

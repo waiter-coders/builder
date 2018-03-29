@@ -19,12 +19,13 @@ class Parse
         $key = substr($shortStr, 1);
         $optionNum = strlen($key);
         $shortArr = array();
-        for ($i = $optionNum-1; $i > 0; $i--) {
+        for ($i = $optionNum-1; $i >= 0; $i--) {
             if ($optionNum-1 == $i) {
-                $value = count($argvs) == 1 ? $argvs[0] : $argvs;
+                $value = count($argvs) == 1 ? $argvs[0] : array_reverse($argvs);
                 $shortArr[$key[$i]] = empty($value) ? true : $value;
+            }else{
+                $shortArr[$shortStr[$i]] = true;
             }
-            $shortArr[$shortStr[$i]] = true;
         }
         
         return $shortArr;

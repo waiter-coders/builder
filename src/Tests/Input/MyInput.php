@@ -16,7 +16,7 @@ class MyInput
 
     public function testGetArguments()
     {
-
+        var_dump($this->input->get());
     }
     
     /**
@@ -33,5 +33,5 @@ class MyInput
 }
 
 $myInput = new MyInput();
-$myInput->testGet();
+$myInput->testGetArguments();
 

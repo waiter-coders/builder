@@ -23,9 +23,9 @@ class Input implements InputInterface
      */
     private $parseArgvs = array();
     
-    public function __construct()
+    public function __construct($argv = array())
     {
-        $argv = $_SERVER['argv'];
+        $argv = $argv ? $argv : $_SERVER['argv'];
         //去掉程序名
         array_shift($argv);
         $this->argvs = $argv;
@@ -74,13 +74,7 @@ class Input implements InputInterface
     
     public function getFirstArgument()
     {
-        foreach ($this->argvs as $token) {
-            if('-' === $token[0]) {
-                continue;
-            }
-            
-            return $token;
-        }
+        return isset($this->parseArgvs[0]) ? $this->parseArgvs[0] : false;
     }
     
     /**

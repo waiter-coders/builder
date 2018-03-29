@@ -9,7 +9,7 @@ namespace Builder\Input;
 interface InputInterface 
 {
     /**
-     * 返回第一个除了 - -- 的参数
+     * 返回第一个参数
      */
     function getFirstArgument();
     
@@ -19,7 +19,7 @@ interface InputInterface
     function getArguments();
     
     /**
-     * 
+     * 返回命令行参数
      * @param String|Int 
      * 
      * @return Mix 返回要获取的参数

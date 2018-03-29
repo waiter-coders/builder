@@ -25,7 +25,7 @@ class Input implements InputInterface
     
     public function __construct()
     {
-        $argv = \filter_input(\INPUT_SERVER, 'argv');
+        $argv = $_SERVER['argv'];
         //去掉程序名
         array_shift($argv);
         $this->argvs = $argv;
@@ -41,7 +41,7 @@ class Input implements InputInterface
     private function parseArgv()
     {
         foreach ($this->argvs as $key => $value) {
-            if ('--' == $value ||  '-' == $value) {
+            if ('--' == substr($value, 0, 2) ||  '-' == substr($value, 0, 1)) {
                 break;
             } 
             $pArgv = Parse::argument($key, $value);
@@ -62,7 +62,7 @@ class Input implements InputInterface
                 $this->setArgument($pArgv['key'], $pArgv['value']);
             } elseif ('-' == substr($value, 0, 1)) {
                 $pArgv = Parse::option($value, $optionArgv);
-                $this->setArgument($pArgv['key'], $pArgv['value']);
+                $this->setArguments($pArgv);
                 $optionArgv = array();
             } else {
                 $optionArgv[] = $value;
@@ -83,14 +83,22 @@ class Input implements InputInterface
         }
     }
     
+    /**
+     * 获得原生的命令行参数
+     * @return Array
+     */
     public function getArguments()
     {
         return $this->argvs;
     }
     
-    public function getArgument($name)
+    public function get($name = '')
     {
-        return $this->parseArgvs[$name];
+        if ('' !== $name){
+            return isset($this->parseArgvs[$name]) ? $this->parseArgvs[$name] : false;
+        }
+        
+        return $this->parseArgvs;
     }
     
     private function setArguments(Array $argv)

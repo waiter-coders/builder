@@ -16,17 +16,22 @@ class MyInput
 
     public function testGetArguments()
     {
-        var_dump($this->input->getArguments());
+
     }
     
-    public function testGetArgument()
+    /**
+     * php MyInput.php fd dfd  -cd dfd dfd --html=html
+     */
+    public function testGet()
     {
-        var_dump($this->input->getArgument('c::'));
+        var_dump($this->input->get(0));
+        var_dump($this->input->get('c'));
+        var_dump($this->input->get('d'));
+        var_dump($this->input->get('html'));
     }
     
 }
 
 $myInput = new MyInput();
-$myInput->testGetArguments();
-$myInput->testGetArgument();
+$myInput->testGet();
 

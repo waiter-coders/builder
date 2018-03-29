@@ -22,9 +22,9 @@ interface InputInterface
      * 
      * @param String|Int 
      * 
-     * @return String 返回要获取的参数
+     * @return Mix 返回要获取的参数
      */
-    function getArgument( $name);
+    function get($name);
     
     /**
      * 判断选项是否存在

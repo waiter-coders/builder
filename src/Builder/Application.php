@@ -6,7 +6,6 @@ use Builder\Output\OutputInterface;
 use Builder\Input\InputInterface;
 use Builder\Input\Input;
 use Builder\Output\Output;
-use Builder\Command\Command;
 
 class Application
 {
@@ -72,25 +71,32 @@ class Application
             $commandName = 'help';
         }
         
-        $this->call($commandName);
-    }
-    
-    public function call($commandName, $params = array(), OutputInterface $output = null)
-    {
         if (!isset(self::$containers[$commandName])) {
             throw new \Exception('调用的命令不存在！');
         }
         
-        $commandReflection  = new \ReflectionClass(self::$containers[$commandName]);
-        $command            = $commandReflection->newInstance();
-        
+        $this->execute($commandName, $input, $output);
+    }
+    
+    public function call($commandName, $params = array(), OutputInterface $output = null)
+    {
         $input = new Input();
         $input->setArguments($params);
+        
         
         if (is_null($output)) {
             $output = new Output();
         }
         
+        $this->execute($commandName, $input, $output);
+    }
+    
+    private function execute($commandName, InputInterface $input, OutputInterface $output)
+    {
+        $commandReflection  = new \ReflectionClass(self::$containers[$commandName]);
+        $command            = $commandReflection->newInstance();
+        
+        $command->setAppliction($this);
         $command->execute($input, $output);
     }
 }

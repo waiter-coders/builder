@@ -77,8 +77,8 @@ class Model extends BuildCommand
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-       $commandName = $input->get(0) . '......';
-       $output->writeln('正在执行命令:' . $output->color($commandName, \Builder\Output\Color::F_GREEN));
+       $tableName = $input->get('t');
+       $output->writeln('正在执行命令:' . $output->color($tableName, \Builder\Output\Color::F_GREEN));
     }
 }
 ```

@@ -57,7 +57,7 @@ class Controller extends BuildCommand
     }
 }
 ```
-*其中有命令行调用*
+*其中有命令行调用*   
 2. 模型示例：
 ```php 
 <?php

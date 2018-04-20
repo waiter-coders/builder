@@ -6,10 +6,11 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 
 use Builder\Application;
+use Builder\Input\Input;
+use Builder\Output\Output;
 
 Application::addCommandNamespace(array('Command\\'=>__DIR__.'/Command'));
 
-use Command\TestCommand;
 
 class ApplicationTest extends TestCase
 {
@@ -20,7 +21,7 @@ class ApplicationTest extends TestCase
     public function testRun()
     {
         $app = new Application();
-        $app->run();
+        $app->run(new Input, new Output);
         $this->assertEquals('test', 'test');
     }
     

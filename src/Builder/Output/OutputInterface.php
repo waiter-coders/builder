@@ -21,4 +21,12 @@ interface OutputInterface
      * @param string|iterable $messages 字符串|字符串数组
      */
     public function writeln($messages);
+    
+    /**
+     * 设置字体颜色
+     * @param type $messages
+     * @param type $fcolor
+     * @param type $bcolor
+     */
+    public function color($messages, $fcolor='', $bcolor='');
 }

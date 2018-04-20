@@ -83,7 +83,7 @@ class Input implements InputInterface
      */
     public function getArguments()
     {
-        return $this->argvs;
+        return $this->parseArgvs;
     }
     
     public function get($name = '')
@@ -95,12 +95,12 @@ class Input implements InputInterface
         return $this->parseArgvs;
     }
     
-    private function setArguments(Array $argv)
+    public function setArguments(Array $argv)
     {
         $this->parseArgvs = array_merge($argv, $this->parseArgvs);
     }
     
-    private function setArgument(String $name, $value)
+    public function setArgument(String $name, $value)
     {
         $this->parseArgvs[$name] = $value;
     }

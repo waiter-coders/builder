@@ -2,24 +2,21 @@
 
 namespace Builder;
 
-use Builder\Output\Output;
+use Builder\Output\OutputInterface;
+use Builder\Input\InputInterface;
 use Builder\Input\Input;
+use Builder\Output\Output;
 use Builder\Command\Command;
-use Builder\Command\HelpCommand;
 
 class Application
 {
-    private $namespaces;
+    public static $containers;
     private static $autoloader;
-    private $commands;
-    private $input;
-    private $output;
-
-
+    public static $commands;
     public function __construct() 
     {
-        $this->input = new Input();
-        $this->output = new Output();
+        //设置帮助命令
+       self::$containers['help'] = 'Builder\\Command\\HelpCommand';
     }
     /**
      * @params array 
@@ -27,38 +24,70 @@ class Application
      */
     public static function addCommandNamespace(Array $namespaces = array())
     {
+        //获取composer自动加载类
         self::$autoloader = $autoloader = include __DIR__ .'/../../vendor/autoload.php';
+        //注册命令空间
         if (is_array($namespaces)) {
             foreach ($namespaces as $namespace => $dir) {
                 $autoloader->setPsr4($namespace, $dir);
+                self::register($namespace, $dir);
             }
         }
     }
     
-    public static function getNamespace()
+    /**
+     * @param type $namespace
+     * @param type $dir
+     */
+    public static function register($namespace, $dir)
     {
-    }
-    public function addCommand($command)
-    {
-        $this->commands[] = $command;
-    }
-    
-    public function run()
-    {
-        
-        $this->setDefaultCommand();
-        
-        foreach ($this->commands as $command) {
-            return $command->execute($this->input, $this->output);
-        }
-    }
-    
-    public function setDefaultCommand($defaultCommand = ''){
-        if(!count($this->commands)) {
-            if (!$defaultCommand instanceof Command) {
-                $defaultCommand = new HelpCommand();
+        $dirs = scandir($dir);
+        foreach ($dirs as $file) {
+            if ($file == '.' || $file == '..') {
+                continue;
             }
-            $this->addCommand($defaultCommand);
+            $path = $dir .'/' . $file;
+            if(is_dir($path)) {
+                self::register($namespace . ucfirst($file) . '\\', $path);
+            }
+            if(is_file($path)){
+                $className = basename($file, '.php');
+                $reflectionName = $namespace . $className;
+                $reflection = new \ReflectionClass($reflectionName);
+                $properties = $reflection->getDefaultProperties();
+                self::$containers[$properties['name']] = $reflectionName;
+            }
         }
+    }
+    
+    public function run(InputInterface $input, OutputInterface $output)
+    {
+        //约定命令行第一个参数为命令的名字
+        $commandName = $input->get(0);
+        
+        if(!$commandName || !isset(self::$containers[$commandName]) || $input->hasParameterOption('h')){
+            $commandName = 'help';
+        }
+        
+        $this->call($commandName);
+    }
+    
+    public function call($commandName, $params = array(), OutputInterface $output = null)
+    {
+        if (!isset(self::$containers[$commandName])) {
+            throw new \Exception('调用的命令不存在！');
+        }
+        
+        $commandReflection  = new \ReflectionClass(self::$containers[$commandName]);
+        $command            = $commandReflection->newInstance();
+        
+        $input = new Input();
+        $input->setArguments($params);
+        
+        if (is_null($output)) {
+            $output = new Output();
+        }
+        
+        $command->execute($input, $output);
     }
 }

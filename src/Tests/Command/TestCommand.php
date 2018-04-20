@@ -8,6 +8,8 @@ use Builder\Output\OutputInterface;
 
 class TestCommand extends Command
 {
+    public $name = 'test';
+    public $description = 'description';
     public function configure()
     {
         $this->setName('test')

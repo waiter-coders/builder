@@ -5,12 +5,13 @@ namespace Builder\Command;
 use Builder\Input\InputInterface;
 use Builder\Output\OutputInterface;
 use Builder\Application;
+
 class HelpCommand extends Command
 {
     
     public $name = 'help';
     
-    public $description = '-h,-help : 显示帮助命令';
+    public $description = '(-h,-help)显示帮助命令';
     
     private $containers;
     

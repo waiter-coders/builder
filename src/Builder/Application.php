@@ -12,10 +12,21 @@ class Application
     public static $containers;
     private static $autoloader;
     public static $commands;
-    public function __construct() 
+    private static $instance;
+    
+    private function __construct() 
     {
         //设置帮助命令
        self::$containers['help'] = 'Builder\\Command\\HelpCommand';
+    }
+    
+    public static function getInstance()
+    {
+        if(!self::$instance){
+            return new self();
+        }else{
+            return self::$instance;
+        }
     }
     /**
      * @params array 
@@ -95,8 +106,6 @@ class Application
     {
         $commandReflection  = new \ReflectionClass(self::$containers[$commandName]);
         $command            = $commandReflection->newInstance();
-        
-        $command->setAppliction($this);
         $command->execute($input, $output);
     }
 }

@@ -37,6 +37,6 @@ class Command
     
     protected function call($commandName, $params = array())
     {
-        $this->application->call($commandName, $params, $output);
+        $this->application->call($commandName, $params);
     }
 }

@@ -9,7 +9,7 @@ waiterphp 的代码生成框架，用于生成特定应用或自定义的代码�
 #!/usr/bin/env php
 <?php
 
-require __DIR__ .  '/start.php';
+require \_\_DIR\_\_ .  '/start.php';
 
 use Builder\Application;
 use Builder\Input\Input;

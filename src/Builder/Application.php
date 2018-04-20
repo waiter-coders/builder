@@ -25,7 +25,7 @@ class Application
     public static function addCommandNamespace(Array $namespaces = array(), $autoloader = '')
     {
         if(!$autoloader){
-            throw new Exception('请传入正确的composer的自动加载类路径');
+            throw new \Exception('请传入正确的composer的自动加载类路径');
         }
         //获取composer自动加载类
         self::$autoloader = $autoloader;

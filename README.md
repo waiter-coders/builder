@@ -78,7 +78,7 @@ class Model extends BuildCommand
     public function execute(InputInterface $input, OutputInterface $output)
     {
        $tableName = $input->get('t');
-       $output->writeln('正在执行命令:' . $output->color($tableName, \Builder\Output\Color::F_GREEN));
+       $output->writeln('要创建model的表名为:' . $output->color($tableName, \Builder\Output\Color::F_GREEN));
     }
 }
 ```

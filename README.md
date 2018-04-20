@@ -52,6 +52,7 @@ class Controller extends BuildCommand
     {
        $commandName = $input->get(0) . '......';
        $output->writeln('正在执行命令:' . $output->color($commandName, \Builder\Output\Color::F_GREEN));
+       //命令之间的调用 命令名 传入的参数 如果调用的命令 php build controller -t sample_admin 则下面的参数可以省略model会直接从命令行参数取得
        
        parent::call('model', array('t'=>'sample_admin'));
     }

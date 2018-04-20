@@ -22,10 +22,13 @@ class Application
      * @params array 
      * 设置命令命名空间
      */
-    public static function addCommandNamespace(Array $namespaces = array())
+    public static function addCommandNamespace(Array $namespaces = array(), $autoloader = '')
     {
+        if(!$autoloader){
+            throw new Exception('请传入正确的composer的自动加载类路径');
+        }
         //获取composer自动加载类
-        self::$autoloader = $autoloader = include __DIR__ .'/../../vendor/autoload.php';
+        self::$autoloader = $autoloader;
         //注册命令空间
         if (is_array($namespaces)) {
             foreach ($namespaces as $namespace => $dir) {

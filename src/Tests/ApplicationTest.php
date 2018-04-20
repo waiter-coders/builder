@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 use Builder\Application;
 use Builder\Input\Input;
 use Builder\Output\Output;
-
-Application::addCommandNamespace(array('Command\\'=>__DIR__.'/Command'));
+$autoloader = include __DIR__.'/../../vendor/autoload.php';
+Application::addCommandNamespace(array('Command\\'=>__DIR__.'/Command'),$autoloader);
 
 
 class ApplicationTest extends TestCase

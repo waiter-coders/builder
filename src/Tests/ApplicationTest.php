@@ -20,8 +20,7 @@ class ApplicationTest extends TestCase
      */
     public function testRun()
     {
-        $app = new Application();
-        $app->run(new Input, new Output);
+        Application::getInstance()->run(new Input, new Output);
         $this->assertEquals('test', 'test');
     }
     

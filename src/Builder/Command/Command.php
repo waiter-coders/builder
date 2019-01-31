@@ -24,19 +24,9 @@ class Command
     {
        throw new Exception('You must override the execute() method in the concrete command class.');
     }
-
-    protected function getApplication()
-    {
-        return $this->application;
-    }
     
-    protected function setApplication($application)
+    public function call($commandName, $params = array())
     {
-        $this->application = $application;
-    }
-    
-    protected function call($commandName, $params = array())
-    {
-        $this->application->call($commandName, $params);
+        \Builder\Application::getInstance()->call($commandName, $params);
     }
 }

@@ -9,15 +9,19 @@ class Dispatcher
 {
     private $basePath = '';
 
-    private $systemBuilder = [
-        'dao'=>'waiterphp.core.builder.main.dao',
-    ];
+    private $systemBuilder = [];
 
     public function __construct($basePath)
     {
         assert_exception(is_dir($basePath), 'base path is not exist:' . $basePath);
         $basePath = realpath($basePath);
         $this->basePath = $basePath;
+        $this->systemBuilder = load_configs('builder.php', __DIR__ . '/config/');
+    }
+
+    public function setBuilderRelative($relative)
+    {
+        $this->systemBuilder = array_merge($this->systemBuilder, $relative);
     }
 
     public function build($package, $params = [])
@@ -32,7 +36,7 @@ class Dispatcher
         if (Factory::hasClass($package) == false) {
             $this->installPackage($package);
         }        
-        $object = factory($package, [$this->basePath]);
+        $object = factory($package, $this->basePath);
         assert_exception($object instanceof BuilderBase, 'package not is builder base:' . $package);return $object; 
     }
 
@@ -47,9 +51,12 @@ class Dispatcher
     // 获取真实的包名
     private function truePackage($package)
     {
-        if (isset($this->systemBuilder[$package])) {
-            return $this->systemBuilder[$package];
-        }
-        return $package;
+        assert_exception(isset($this->systemBuilder[$package]), $this->actionError($package));
+        return $this->systemBuilder[$package];
+    }
+
+    private function actionError($package)
+    {
+        return sprintf('not has action %s,user package must use setBuilderRelative to set', $package);
     }
 } 

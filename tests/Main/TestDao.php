@@ -1,10 +1,10 @@
 <?php
 
-namespace Waiterphp\Core\Tests\Builder\Main;
+namespace Waiterphp\Builder\Tests\Builder\Main;
 
-use Waiterphp\Core\Tests\TestCase as TestCase;
+use Waiterphp\Builder\Tests\TestCase as TestCase;
 
-use Waiterphp\Core\Builder\Main\Dao as BuilderDao;
+use Waiterphp\Builder\Main\Dao as BuilderDao;
 use Waiterphp\Core\File\File as File;
 
 class TestDao extends TestCase

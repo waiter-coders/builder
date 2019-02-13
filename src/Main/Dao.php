@@ -1,8 +1,8 @@
 <?php
 
-namespace Waiterphp\Core\Builder\Main;
+namespace Waiterphp\Builder\Main;
 
-use Waiterphp\Core\Builder\Base as Base;
+use Waiterphp\Builder\Base as Base;
 
 
 class Dao extends Base

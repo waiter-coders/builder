@@ -1,9 +1,9 @@
 <?php
 
-namespace Waiterphp\Core\Builder;
+namespace Waiterphp\Builder;
 
 use Waiterphp\Core\Env\Factory as Factory;
-use Waiterphp\Core\Builder\Base as BuilderBase;
+use Waiterphp\Builder\Base as BuilderBase;
 
 class Dispatcher
 {

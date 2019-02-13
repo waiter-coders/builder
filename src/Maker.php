@@ -1,5 +1,5 @@
 <?php
-namespace Waiterphp\Core\Builder;
+namespace Waiterphp\Builder;
 
 use Waiterphp\Core\File\File as File;
 use Waiterphp\Core\Console\Shell as Shell;

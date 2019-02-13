@@ -1,8 +1,8 @@
 <?php
-namespace Waiterphp\Core\Builder;
+namespace Waiterphp\Builder;
 
-use Waiterphp\Core\Builder\Maker as Maker;
-use Waiterphp\Core\Builder\Dispatcher as Dispatcher;
+use Waiterphp\Builder\Maker as Maker;
+use Waiterphp\Builder\Dispatcher as Dispatcher;
 
 abstract class Base
 {

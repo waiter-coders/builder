@@ -18,7 +18,7 @@ class TestDao extends TestCase
 
     public function test_build()
     {
-        $daoFile = '/tmp/Model/Exam/ExamChoice.php';
+        $daoFile = '/tmp/Model/Exam/Choice.php';
         is_file($daoFile) && unlink($daoFile);
 
         $this->builder->build([

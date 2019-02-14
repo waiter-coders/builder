@@ -20,10 +20,10 @@ abstract class Base
         $this->basePath = $basePath;
     }
 
-    protected function buildFile($template, $file, $params = [])
+    protected function buildFile($template, $file, $params = [], $isForce = false)
     {
         // 检查文件是否存在，存在则询问用户是否覆盖
-        if (is_file($file)) {
+        if ($isForce == false && is_file($file)) {
             $continue = Shell::askUser('已有以下文件，是否覆盖？' . $file);
             if ($continue == false) { // 不覆盖则直接跳过
                 return false;
@@ -38,14 +38,14 @@ abstract class Base
         File::write($file, $content, 'w');
     }
 
-    protected function buildDir($templateDir, $targetDir, $params = [])
+    protected function buildDir($templateDir, $targetDir, $params = [], $isForce = false)
     {
         $templates = File::getFiles($templateDir);
         $dirLength = strlen(rtrim($templateDir, DIRECTORY_SEPARATOR));
         foreach ($templates as $template) {
             $relativePath = trim(substr($template, $dirLength), DIRECTORY_SEPARATOR);
             $targetFile = $targetDir . DIRECTORY_SEPARATOR . $relativePath;
-            $this->buildFile($template, $targetFile, $params);
+            $this->buildFile($template, $targetFile, $params, $isForce);
         }
     }
 

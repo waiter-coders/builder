@@ -1,7 +1,5 @@
 <?php
-$configs = [];
-
-$configs['database'] = [
+return [
     'default'=>[
         'host'=>'127.0.0.1',
         'username'=>'root',
@@ -9,5 +7,3 @@ $configs['database'] = [
         'database'=>'test'
     ],
 ];
-
-return $configs;

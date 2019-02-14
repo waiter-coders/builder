@@ -16,7 +16,7 @@ class Dispatcher
         assert_exception(is_dir($basePath), 'base path is not exist:' . $basePath);
         $basePath = realpath($basePath);
         $this->basePath = $basePath;
-        $this->systemBuilder = load_configs('builder.php', __DIR__ . '/config/');
+        $this->systemBuilder = load_configs(__DIR__ . '/config/builder.php', false);
     }
 
     public function setBuilderRelative($relative)

@@ -7,7 +7,6 @@ class Web extends Base
     private $loginMap = array(
         'user/login'=>1,
         'user/isLogin'=>1,
-        'tv/allData'=>1,
     );
 
     public function route()

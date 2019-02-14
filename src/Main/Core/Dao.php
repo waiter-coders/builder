@@ -42,7 +42,7 @@ class Dao extends Base
             $path = underline_to_hump($params['path']);
             $format['path'] .= DIRECTORY_SEPARATOR . $path;
             $format['namespace'] .= '\\' . $path;
-            if (strncmp($format['model'], $path, strlen($path)) == 0) {
+            if ($format['model'] != $path && strncmp($format['model'], $path, strlen($path)) == 0) {
                 $format['model'] = substr($format['model'], strlen($path));
             }
         }

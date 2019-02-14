@@ -41,12 +41,14 @@ class AdminForm extends Base
             $path = underline_to_hump($params['path']);
             $format['path'] .= DIRECTORY_SEPARATOR . $path;
             $format['namespace'] .= '\\' . $path;            
-            if (strncmp($format['controller'], $path, strlen($path)) == 0) {
+            if ($format['controller'] != $path && strncmp($format['controller'], $path, strlen($path)) == 0) {
                 $format['controller'] = substr($format['controller'], strlen($path));
                 $format['model'] = substr($format['model'], strlen($path));
             }
             $format['model'] = $path . '.' . $format['model'];
         }
+
+        $format['controller'] .=  'Form';
 
         return $format;
     }

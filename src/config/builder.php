@@ -14,4 +14,4 @@ return [
     'admin.list'=>'waiterphp.builder.main.admin.adminList',
     'admin.form'=>'waiterphp.builder.main.admin.adminForm',
     'admin.tree'=>'waiterphp.builder.main.admin.adminTree',
-];
+]; 

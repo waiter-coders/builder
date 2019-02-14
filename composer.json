@@ -1,6 +1,6 @@
 {
     "name": "waiterphp/builder",
-    "description": "waiterphp console",
+    "description": "waiterphp builder",
     "type": "library",
     "require": {
         "php": ">=5.4.0",

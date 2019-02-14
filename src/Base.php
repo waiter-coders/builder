@@ -15,7 +15,6 @@ abstract class Base
 
     public function __construct($basePath)
     {
-        var_dump($basePath);
         assert_exception(is_dir($basePath), 'base path is not exist:' . $basePath);
         $basePath = realpath($basePath);
         $this->basePath = $basePath;
@@ -24,12 +23,14 @@ abstract class Base
     protected function buildFile($template, $file, $params = [])
     {
         // 检查文件是否存在，存在则询问用户是否覆盖
-        // if (is_file($file)) {
-        //     $continue = Shell::askUser('已经有该为文件，是否覆盖？' . $file);
-        //     if ($continue == false) { // 不覆盖则直接跳出
-        //         return false;
-        //     }
-        // }
+        if (is_file($file)) {
+            $continue = Shell::askUser('已有以下文件，是否覆盖？' . $file);
+            if ($continue == false) { // 不覆盖则直接跳过
+                return false;
+            } else {
+                Shell::output('覆盖后，可通过git对比文件更改！');
+            }
+        }
 
         // 编辑模板，写入文件
         $template = file_get_contents($template);

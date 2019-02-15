@@ -1,7 +1,7 @@
 <?php
-namespace Service;
+namespace Model\User;
 
-class User
+class Session
 {
     public function isLogin()
     {
@@ -10,7 +10,14 @@ class User
 
     public function loginByPassword($username, $password)
     {
-        $login = \Tools\Ldap::login($username, $password);
+        $login = false;
+
+        // 管理员登录
+        $admin = get_env('admin');
+        if (isset($admin[$username]) && $admin[$username]['password'] == $password) {
+            $login = true;
+        }
+        
         if ($login == true) {
             $_SESSION['username'] = trim($username);
         }

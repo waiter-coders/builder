@@ -1,7 +1,7 @@
 <?php
 namespace _namespace_;
 
-use Waiterphp\Core\TreeTrait;
+use Waiterphp\Core\Dao\TreeTrait;
 
 class _Model_ extends \Model\Base
 {

@@ -8,19 +8,19 @@ class User extends Base
 {
     public function isLogin(Request $request)
     {
-        return service('user')->isLogin();
+        return model('user.session')->isLogin();
     }
 
     public function login(Request $request)
     {
         $username = $request->getString('username');
         $password = $request->getString('password');
-        $login = service('user')->loginByPassword($username, $password);
+        $login = model('user.session')->loginByPassword($username, $password);
         return $login;
     }
 
     public function loginOut(Request $request)
     {
-        return service('user')->loginOut();
+        return model('user.session')->loginOut();
     }
 }

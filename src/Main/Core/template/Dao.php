@@ -1,7 +1,7 @@
 <?php
 namespace _namespace_;
 
-use Waiterphp\Dao\DaoTrait;
+use Waiterphp\Core\Dao\DaoTrait;
 
 class _Model_ extends \Model\Base
 {

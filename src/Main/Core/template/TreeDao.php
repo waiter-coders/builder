@@ -10,6 +10,6 @@ class _Model_ extends \Model\Base
     protected function setTreeConfig()
     {
         $this->daoConfig->setTable('_table_');
-        $this->initTreeFields('_nodeId_', '_name_');
+        $this->initTreeFields('_nodeId_', '_label_', '_parentId_', '_preNodeId_', '_nextNodeId_');
     }
 }

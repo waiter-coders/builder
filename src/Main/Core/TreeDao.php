@@ -59,7 +59,12 @@ class TreeDao extends Base
             'Model'=>$params['model'],
             'table'=>$params['table'],
             'primaryKey'=>'',
-            'fields'=>[]
+            'fields'=>[],
+            'nodeId'=>'nodeId',
+            'label'=>'label',
+            'parentId'=>'parentId',
+            'preNodeId'=>'preNodeId',
+            'nextNodeId'=>'nextNodeId'
         ];
 
         foreach ($struct as $field) {

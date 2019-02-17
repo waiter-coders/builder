@@ -49,7 +49,7 @@ class Table extends Base
             $format['model'] = $path . '.' . $format['model'];
         }
 
-        $format['controller'] .=  'List';
+        $format['controller'] .=  'Table';
 
         return $format;
     }

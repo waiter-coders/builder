@@ -1,7 +1,7 @@
 <?php
 namespace _namespace_;
 
-use Waiterphp\Admin\TreeTrait as TreeTrait;
+use \Waiterphp\Admin\TreeTrait as TreeTrait;
 use \Waiterphp\Admin\Config\Tree as TreeConfig;
 
 class _controller_ extends \Controller\Base

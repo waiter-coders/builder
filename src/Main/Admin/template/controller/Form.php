@@ -1,7 +1,7 @@
 <?php
 namespace _namespace_;
 
-use Waiterphp\Admin\FormTrait as FormTrait;
+use \Waiterphp\Admin\FormTrait as FormTrait;
 use \Waiterphp\Admin\Config\Form as FormConfig;
 
 class _controller_ extends \Controller\Base

@@ -14,7 +14,7 @@ class Form extends Base
 
         // 生成控制器
         $data = $this->formatParams($params);
-        $template = __DIR__ . '/template/action/AdminForm.php';
+        $template = __DIR__ . '/template/controller/Form.php';
         $targetFile = $this->basePath . '/' . $data['path'] . '/' . $data['controller'] . '.php';
         $this->buildFile($template, $targetFile, $data);
     }

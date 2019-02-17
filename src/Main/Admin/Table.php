@@ -15,7 +15,7 @@ class Table extends Base
         $this->dispatcher('dao', $params);
 
         // 生成控制器
-        $template = __DIR__ . '/template/action/AdminList.php';
+        $template = __DIR__ . '/template/controller/Table.php';
         $targetFile = $this->basePath . '/' . $data['path'] . '/' . $data['controller'] . '.php';
         $this->buildFile($template, $targetFile, $data);
     }

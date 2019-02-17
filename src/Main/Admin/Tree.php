@@ -14,7 +14,7 @@ class Tree extends Base
 
         // 生成控制器
         $data = $this->formatParams($params);
-        $template = __DIR__ . '/template/action/AdminTree.php';
+        $template = __DIR__ . '/template/controller/Tree.php';
         $targetFile = $this->basePath . '/' . $data['path'] . '/' . $data['controller'] . '.php';
         $this->buildFile($template, $targetFile, $data);
     }

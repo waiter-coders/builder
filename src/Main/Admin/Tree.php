@@ -5,7 +5,7 @@ namespace Waiterphp\Builder\Main\Admin;
 use Waiterphp\Builder\Base as Base;
 
 
-class AdminTree extends Base
+class Tree extends Base
 {
     public function build($params = [])
     {

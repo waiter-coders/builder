@@ -33,10 +33,11 @@ class Tree extends Base
         $format['database'] = 'default';
 
         // 标准化模型相关
-        $format['controller'] = underline_to_hump($format['table']);
+        $controller = isset($params['controller']) ? $params['controller'] : $format['table'];
+        $format['controller'] = underline_to_hump($controller);
         $format['path'] = 'controller';
         $format['namespace'] = 'Controller';
-        $format['model'] = $format['controller'];
+        $format['model'] = underline_to_hump($format['table']);
         if (isset($params['path'])) {
             $path = underline_to_hump($params['path']);
             $format['path'] .= DIRECTORY_SEPARATOR . $path;

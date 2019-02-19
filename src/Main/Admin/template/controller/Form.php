@@ -11,7 +11,13 @@ class _controller_ extends \Controller\Base
     protected function setConfig()
     {
         $adminForm = new FormConfig(model('_model_'));
-
+        $primaryKey = $adminForm->getDao()->primaryKey();
+        $id = $this->request->getInt($primaryKey, 0);
+        if (empty($id)) {
+            $adminForm->addAction('add');
+        } else {
+            $adminForm->addAction('edit');
+        }
         return $adminForm;
     }
 }

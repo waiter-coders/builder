@@ -11,7 +11,7 @@ class _controller_ extends \Controller\Base
     protected function setConfig()
     {
         $adminTable = new TableConfig(model('_model_'));
-
+        $adminTable->addRowAction('delete');
         return $adminTable;
     }
 }

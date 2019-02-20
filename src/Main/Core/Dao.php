@@ -35,7 +35,8 @@ class Dao extends Base
         $format['database'] = 'default';
 
         // 标准化模型相关
-        $format['model'] = underline_to_hump($format['table']);
+        $model = isset($params['model']) ? $params['model'] : $format['table'];
+        $format['model'] = underline_to_hump($model);
         $format['path'] = 'model';
         $format['namespace'] = 'Model';
         if (isset($params['path'])) {

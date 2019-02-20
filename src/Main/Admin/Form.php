@@ -37,7 +37,8 @@ class Form extends Base
         $format['controller'] = underline_to_hump($controller);
         $format['path'] = 'controller';
         $format['namespace'] = 'Controller';
-        $format['model'] = underline_to_hump($format['table']);
+        $model = isset($params['model']) ? $params['model'] : $format['table'];
+        $format['model'] = underline_to_hump($model);
         if (isset($params['path'])) {
             $path = underline_to_hump($params['path']);
             $format['path'] .= DIRECTORY_SEPARATOR . $path;

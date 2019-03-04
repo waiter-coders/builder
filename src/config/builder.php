@@ -11,7 +11,7 @@ return [
 
     // admin项目
     'admin'=>'waiterphp.builder.main.admin.project',
-    'admin.table'=>'waiterphp.builder.main.admin.table',
+    'admin.list'=>'waiterphp.builder.main.admin.table',
     'admin.form'=>'waiterphp.builder.main.admin.form',
     'admin.tree'=>'waiterphp.builder.main.admin.tree',
 ]; 

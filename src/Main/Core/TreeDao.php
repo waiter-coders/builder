@@ -63,6 +63,7 @@ class TreeDao extends Base
             'fields'=>[],
             'nodeId'=>'nodeId',
             'label'=>'label',
+            'topicId'=>'topicId',
             'parentId'=>'parentId',
             'preNodeId'=>'preNodeId',
             'nextNodeId'=>'nextNodeId'
